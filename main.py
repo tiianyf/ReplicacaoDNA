@@ -1,3 +1,6 @@
+"""
+k-mers counting
+"""
 
 
 # fatia a string no tamanho k e move ela
