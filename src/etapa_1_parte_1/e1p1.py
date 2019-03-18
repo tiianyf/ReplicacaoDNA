@@ -1,5 +1,11 @@
 """
 k-mers counting
+Etapa 1 Parte 1:
+-> Separar em grupos de 9 letras o arquivo;
+-> Armazenar numa estrutura de dados;
+-> Comparar as palavras de 9 letras;
+-> Contar suas repetições.
+
 """
 
 
@@ -56,15 +62,24 @@ def busca_string_reversa(secundaria, original_string, primaria):
 
 
 def main():
-    arquivo = open('dna.txt', 'r')
+    arquivo = open('../../assets/dna_etapa_1_parte_1.txt', 'r')
     original_string = arquivo.readline()
     lista = []
 
     for i in range(len(original_string)):
         lista.append(original_string[i: i+1])
 
+    # tamanho igual a 9
     print("Essas foram as strings complementares com tamanho igual a 9\n")
     slice_and_switch(lista, 9)
+
+    # tamanho fornecido pelo usuário
+    # k = int(input("Insira aqui o tamanho da string que deseja analisar: "))
+    # slice_and_switch(lista, k)
+
+    # varrendo a string toda (demora muito)
+    # for i in range(len(lista)):
+    #     slice_and_switch(original_string, i)
 
 
 if __name__ == '__main__':
