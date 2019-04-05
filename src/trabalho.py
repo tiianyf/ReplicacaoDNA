@@ -12,3 +12,41 @@ VALOR: 35pts
 
 OBS: Até agora é como se tivéssemos considerado tudo como D = 0.
 """
+
+from random import randint
+
+
+"""
+    Cria os 3 arquivos, passando como parâmetro o tamanho (quantidade de letras)
+    da string
+"""
+def generate_txt_file(size):
+    # criando arquivos de texto
+    dna_k7 = open("../assets/dna_k7.txt", "a+")
+    dna_k8 = open("../assets/dna_k8.txt", "a+")
+    dna_k9 = open("../assets/dna_k9.txt", "a+")
+
+    for i in range(size):
+        cont = randint(1, 4)
+        if cont == 1:
+            char = 'A'
+        elif cont == 2:
+            char = 'T'
+        elif cont == 3:
+            char = 'C'
+        else:
+            char = 'G'
+
+
+
+
+def main():
+    # lendo arquivo
+    text_file = open("../assets/dna_vibrio_cholerae.txt", "r")
+    string = text_file.readline()
+    text_file.close()
+    print(string)
+
+
+if __name__ == '__main__':
+    main()

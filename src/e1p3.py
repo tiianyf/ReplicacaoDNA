@@ -20,7 +20,7 @@ def counter(string):
 
 
 def main():
-    archive = open("../assets/dna_etapa_1_parte_1.txt", "r")
+    archive = open("../assets/dna_vibrio_cholerae.txt", "r")
     my_string = archive.readline()
     archive.close()
 

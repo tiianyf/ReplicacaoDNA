@@ -65,7 +65,7 @@ def busca_string_reversa(secundaria, original_string, primaria, repeticoes):
 
 
 def main():
-    arquivo = open('../assets/dna_etapa_1_parte_1.txt', 'r')
+    arquivo = open('../assets/dna_vibrio_cholerae.txt', 'r')
     original_string = arquivo.readline()
     lista = []
 

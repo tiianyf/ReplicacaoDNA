@@ -11,9 +11,9 @@ from random import randint
 
 
 def main():
-    file = list(open('../assets/dna_etapa_1_parte_2.txt', 'w+'))
+    file = (open('../assets/dna_criado_teste.txt', 'w+'))
 
-    for i in range(50):
+    for i in range(100):
         cont = randint(1, 4)
         if cont == 1:
             char = 'A'
@@ -24,9 +24,8 @@ def main():
         else:
             char = 'G'
 
-        file.append(char)
-
-    print(file)
+        file.write(char)
+    file.close()
 
 
 if __name__ == '__main__':
