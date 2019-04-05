@@ -17,8 +17,7 @@ from random import randint
 
 
 """
-    Cria os 3 arquivos, passando como parâmetro o tamanho (quantidade de letras)
-    da string
+    Cria os 3 arquivos, passando como parâmetro o tamanho (quantidade de letras) da string
 """
 def generate_txt_file(size):
     # criando arquivos de texto
@@ -38,15 +37,87 @@ def generate_txt_file(size):
             char = 'G'
 
 
+"""
+    fatia a string no tamanho k e move ela
+"""
+def slice_and_switch(string, k):
+    jumping = len(string) - k + 1
+
+    for i in range(jumping):
+        slice = string[i: i + k]
+        create_complement(slice, string)
+
+
+"""
+    criando string complementar, pra depois tentar achar ela dentro da string inteira
+    A string complementar é o inverso das ligações da String, por exemplo,
+    o inverso da string TTGATCA é TGATCAA.
+    Ou seja: seja a string (TTGATCA):
+    Inverta ela (ACTAGTT);
+    E substitua com as ligações de nucleotídeos (A com T, G com C e vice-versa).
+"""
+def create_complement(slice, string):
+    complement = []
+
+    for i in range(len(slice) - 1, -1, -1):
+        switch = ''
+
+        if slice[i] == 'a':
+            switch = 't'
+        elif slice[i] == 'c':
+            switch = 'g'
+        elif slice[i] == 'g':
+            switch = 'c'
+        elif slice[i] == 't':
+            switch = 'a'
+
+        complement.append(switch)
+    # print("E a complementar é ", complement) por enquanto tá tudo tranquilo
+
+    if find_string_complement(complement, string, slice):
+        return True
+    else:
+        return False
+
+
+"""
+    Verifica dentro da string completa se a complementar (criada na função anterior) já existe
+
+"""
+def find_string_complement(complement, string, slice):
+    flag = False
+
+    for i in range(len(string)):
+        if string[i: i + len(complement)] == complement:
+            print("Primária: ", string)
+            print("Secundária: ", complement)
+            flag = True
+
+    if flag:
+        # print("Não vai dar não...")
+        return False
+    else:
+        print("Primária:", slice)
+        print("Complementar:", complement, "\n")
+        return True
 
 
 def main():
-    # lendo arquivo
+    # carregando arquivo principal e copiando para uma lista
     text_file = open("../assets/dna_vibrio_cholerae.txt", "r")
     string = text_file.readline()
     text_file.close()
-    print(string)
+    lista = []
 
+    # ignorando a última linha, pq é uma quebra de linha (\n)
+    for i in range(len(string)-1):
+        lista.append(string[i:i+1])
+
+    print(lista)
+
+    # achando as string complementares de tamanho (7 a 9)
+    print("Essas são as string complementares de tamanho 7:")
+    slice_and_switch(string, 7)
 
 if __name__ == '__main__':
     main()
