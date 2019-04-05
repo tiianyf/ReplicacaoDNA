@@ -2,24 +2,30 @@
 Dado uma String, verificar qual letra é a mais frequente.
 """
 
+# criando um dicionário que armazena chave (letra em questão) e valor(número de repetições)
+# dict[chave] = valor --> dict = {'kids': 4}
+# a chave 'kids' tem o valor 4 (a palavra 'kids' aparece 4 vezes)
 
-# criando um dicionário que armazena chave (número de repetições) e valor(a letra em questão)
+
 def counter(string):
-    count = {}
-    for i in string:
-        if i in string:
-            count[i] += 1
+    dicionario = {}
+    # varrendo tudo e armazenando em um dicionário
+    for chave in string:
+        if chave in dicionario.keys():
+            dicionario[chave] += 1
         else:
-            count[i] = 1
+            dicionario[chave] = 1
 
-    return count
+    return dicionario
 
 
 def main():
-    file = open("../assets/dna_1.txt", "r")
-    my_original_string = file.readline()
-    file.close()
-    counter(my_original_string)
+    archive = open("../assets/dna_etapa_1_parte_1.txt", "r")
+    my_string = archive.readline()
+    archive.close()
+
+    print("\n\tAqui estão todas as letras e suas respectivas repetições:\n\t",
+          counter(my_string))
 
 
 if __name__ == "__main__":

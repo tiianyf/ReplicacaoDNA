@@ -1,15 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="309b5176-85dc-4c03-ada1-c00828fdd869" name="Default Changelist" comment="foo">
-      <change afterPath="$PROJECT_DIR$/assets/dna_1.txt" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/assets/dna_etapa_1_parte_2.txt" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/e1p1.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/e1p2.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/e1p3.py" afterDir="false" />
+    <list default="true" id="309b5176-85dc-4c03-ada1-c00828fdd869" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/etapa_1_parte_1/e1p1.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/etapa_1_parte_2/e1p2.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/e1p3.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/e1p3.py" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -22,8 +16,8 @@
       <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/e1p3.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="272">
-              <caret line="16" lean-forward="true" selection-start-line="16" selection-end-line="16" />
+            <state relative-caret-position="289">
+              <caret line="17" lean-forward="true" selection-start-line="17" selection-end-line="17" />
             </state>
           </provider>
         </entry>
@@ -63,13 +57,13 @@
         <option value="$PROJECT_DIR$/src/etapa_1_parte_1/e1p1.py" />
         <option value="$PROJECT_DIR$/assets/dna_etapa_1_parte_2.txt" />
         <option value="$PROJECT_DIR$/assets/dna_1.txt" />
-        <option value="$PROJECT_DIR$/src/e1p3.py" />
         <option value="$PROJECT_DIR$/src/e1p1.py" />
         <option value="$PROJECT_DIR$/src/e1p2.py" />
+        <option value="$PROJECT_DIR$/src/e1p3.py" />
       </list>
     </option>
   </component>
-  <component name="ProjectFrameBounds" extendedState="6">
+  <component name="ProjectFrameBounds" extendedState="6" fullScreen="true">
     <option name="width" value="1366" />
     <option name="height" value="738" />
   </component>
@@ -122,7 +116,7 @@
       </list>
     </option>
   </component>
-  <component name="RunManager" selected="Python.main (1)">
+  <component name="RunManager" selected="Python.e1p3">
     <configuration name="e1p1" type="PythonConfigurationType" factoryName="Python" temporary="true">
       <module name="ReplicacaoDNA" />
       <option name="INTERPRETER_OPTIONS" value="" />
@@ -251,10 +245,10 @@
     </configuration>
     <recent_temporary>
       <list>
+        <item itemvalue="Python.e1p3" />
         <item itemvalue="Python.e1p1" />
         <item itemvalue="Python.e1p1" />
         <item itemvalue="Python.e1p2" />
-        <item itemvalue="Python.e1p3" />
       </list>
     </recent_temporary>
   </component>
@@ -270,6 +264,14 @@
       <option name="presentableId" value="Default" />
       <updated>1552833091379</updated>
     </task>
+    <task id="LOCAL-00001" summary="trying to do the 3rd part">
+      <created>1554385327999</created>
+      <option name="number" value="00001" />
+      <option name="presentableId" value="LOCAL-00001" />
+      <option name="project" value="LOCAL" />
+      <updated>1554385328000</updated>
+    </task>
+    <option name="localTasksCounter" value="2" />
     <servers />
   </component>
   <component name="TodoView">
@@ -282,10 +284,9 @@
     </todo-panel>
   </component>
   <component name="ToolWindowManager">
-    <frame x="-1" y="0" width="1368" height="742" extended-state="6" />
-    <editor active="true" />
+    <frame x="-1" y="-26" width="1368" height="799" extended-state="6" />
     <layout>
-      <window_info active="true" content_ui="combo" id="Project" internal_type="SLIDING" order="0" visible="true" weight="0.16398244" />
+      <window_info content_ui="combo" id="Project" internal_type="SLIDING" order="0" weight="0.16398244" />
       <window_info id="Structure" order="1" weight="0.24944155" />
       <window_info id="Favorites" order="2" side_tool="true" />
       <window_info anchor="bottom" id="Inspection Results" weight="0.3284553" />
@@ -307,6 +308,29 @@
       <window_info anchor="right" id="R Graphics" order="3" />
       <window_info anchor="right" id="R Packages" order="4" />
     </layout>
+    <layout-to-restore>
+      <window_info content_ui="combo" id="Project" internal_type="SLIDING" order="0" visible="true" weight="0.16398244" />
+      <window_info id="Structure" order="1" weight="0.24944155" />
+      <window_info id="Favorites" order="2" side_tool="true" />
+      <window_info anchor="bottom" id="Inspection Results" order="0" weight="0.3284553" />
+      <window_info anchor="bottom" id="Message" order="1" />
+      <window_info anchor="bottom" id="Find" order="2" />
+      <window_info anchor="bottom" x="0" y="0" width="1366" height="737" id="Run" order="3" type="FLOATING" weight="0.32866043" />
+      <window_info anchor="bottom" id="Debug" order="4" weight="0.3993994" />
+      <window_info anchor="bottom" id="Cvs" order="5" weight="0.25" />
+      <window_info anchor="bottom" id="Inspection" order="6" weight="0.4" />
+      <window_info anchor="bottom" id="TODO" order="7" weight="0.44227642" />
+      <window_info anchor="bottom" id="Version Control" order="8" show_stripe_button="false" weight="0.51869917" />
+      <window_info anchor="bottom" id="Educational.CheckDetails" order="9" />
+      <window_info anchor="bottom" id="Terminal" order="10" weight="0.32970452" />
+      <window_info anchor="bottom" id="Python Console" order="11" weight="0.3284553" />
+      <window_info anchor="bottom" id="Event Log" order="12" side_tool="true" weight="0.32732734" />
+      <window_info anchor="right" id="Commander" internal_type="SLIDING" order="0" type="SLIDING" weight="0.4" />
+      <window_info anchor="right" id="Ant Build" order="1" weight="0.25" />
+      <window_info anchor="right" content_ui="combo" id="Hierarchy" order="2" weight="0.25" />
+      <window_info anchor="right" id="R Graphics" order="3" />
+      <window_info anchor="right" id="R Packages" order="4" />
+    </layout-to-restore>
   </component>
   <component name="Vcs.Log.Tabs.Properties">
     <option name="TAB_STATES">
@@ -347,6 +371,10 @@
         </entry>
       </map>
     </option>
+  </component>
+  <component name="VcsManagerConfiguration">
+    <MESSAGE value="trying to do the 3rd part" />
+    <option name="LAST_COMMIT_MESSAGE" value="trying to do the 3rd part" />
   </component>
   <component name="editorHistoryManager">
     <entry file="file://$USER_HOME$/.PyCharmEdu2018.3/system/python_stubs/932878910/builtins.py" />
@@ -420,8 +448,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/e1p3.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="272">
-          <caret line="16" lean-forward="true" selection-start-line="16" selection-end-line="16" />
+        <state relative-caret-position="289">
+          <caret line="17" lean-forward="true" selection-start-line="17" selection-end-line="17" />
         </state>
       </provider>
     </entry>
