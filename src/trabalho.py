@@ -82,24 +82,20 @@ def create_complement(slice, string):
 
 """
     Verifica dentro da string completa se a complementar (criada na função anterior) já existe
-
 """
 def find_string_complement(complement, string, slice):
     flag = False
 
     for i in range(len(string)):
         if string[i: i + len(complement)] == complement:
-            print("Primária: ", string)
-            print("Secundária: ", complement)
             flag = True
 
-    if flag:
-        # print("Não vai dar não...")
-        return False
-    else:
+    if not flag:
         print("Primária:", slice)
-        print("Complementar:", complement, "\n")
+        print("Complementar:", complement)
         return True
+    else:
+        return False
 
 
 def main():
@@ -113,11 +109,9 @@ def main():
     for i in range(len(string)-1):
         lista.append(string[i:i+1])
 
-    print(lista)
-
     # achando as string complementares de tamanho (7 a 9)
-    print("Essas são as string complementares de tamanho 7:")
-    slice_and_switch(string, 7)
+    print("Essas são as string complementares de tamanho 9:")
+    slice_and_switch(string, 9)
 
 if __name__ == '__main__':
     main()

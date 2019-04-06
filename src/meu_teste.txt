@@ -1,0 +1,25 @@
+['g', 'a', 't', 't', 'a', 'c', 'a', 'g', 'a', 't', 't', 'a', 'c', 'a', 'g', 'a', '\n']
+Essas são as string complementares de tamanho 7:
+Primária: gattaca
+Complementar: ['t', 'g', 't', 'a', 'a', 't', 'c']
+Primária: attacag
+Complementar: ['c', 't', 'g', 't', 'a', 'a', 't']
+Primária: ttacaga
+Complementar: ['t', 'c', 't', 'g', 't', 'a', 'a']
+Primária: tacagat
+Complementar: ['a', 't', 'c', 't', 'g', 't', 'a']
+Primária: acagatt
+Complementar: ['a', 'a', 't', 'c', 't', 'g', 't']
+Primária: cagatta
+Complementar: ['t', 'a', 'a', 't', 'c', 't', 'g']
+Primária: agattac
+Complementar: ['g', 't', 'a', 'a', 't', 'c', 't']
+Primária: gattaca
+Complementar: ['t', 'g', 't', 'a', 'a', 't', 'c']
+Primária: attacag
+Complementar: ['c', 't', 'g', 't', 'a', 'a', 't']
+Primária: ttacaga
+Complementar: ['t', 'c', 't', 'g', 't', 'a', 'a']
+Primária: tacaga
+
+Complementar: ['', 't', 'c', 't', 'g', 't', 'a']
