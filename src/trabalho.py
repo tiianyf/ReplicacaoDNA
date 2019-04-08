@@ -15,7 +15,6 @@ OBS: Até agora é como se tivéssemos considerado tudo como D = 0.
 
 from random import randint
 
-
 """
     Cria os 3 arquivos, passando como parâmetro o tamanho (quantidade de letras) da string
 """
@@ -44,8 +43,8 @@ def slice_and_switch(string, k):
     jumping = len(string) - k + 1
 
     for i in range(jumping):
-        slice = string[i: i + k]
-        create_complement(slice, string)
+        sequence = string[i: i + k]
+        create_complement(sequence, string)
 
 
 """
@@ -56,25 +55,25 @@ def slice_and_switch(string, k):
     Inverta ela (ACTAGTT);
     E substitua com as ligações de nucleotídeos (A com T, G com C e vice-versa).
 """
-def create_complement(slice, string):
+def create_complement(sequence, string):
     complement = []
 
-    for i in range(len(slice) - 1, -1, -1):
+    for i in range(len(sequence) - 1, -1, -1):
         switch = ''
 
-        if slice[i] == 'a':
+        if sequence[i] == 'a':
             switch = 't'
-        elif slice[i] == 'c':
+        elif sequence[i] == 'c':
             switch = 'g'
-        elif slice[i] == 'g':
+        elif sequence[i] == 'g':
             switch = 'c'
-        elif slice[i] == 't':
+        elif sequence[i] == 't':
             switch = 'a'
 
         complement.append(switch)
     # print("E a complementar é ", complement) por enquanto tá tudo tranquilo
 
-    if find_string_complement(complement, string, slice):
+    if find_string_complement(complement, string, sequence):
         return True
     else:
         return False
@@ -83,15 +82,16 @@ def create_complement(slice, string):
 """
     Verifica dentro da string completa se a complementar (criada na função anterior) já existe
 """
-def find_string_complement(complement, string, slice):
+def find_string_complement(complement, string, sequence):
     flag = False
 
     for i in range(len(string)):
         if string[i: i + len(complement)] == complement:
+
             flag = True
 
     if not flag:
-        print("Primária:", slice)
+        print("Primária:", sequence)
         print("Complementar:", complement)
         return True
     else:
@@ -108,10 +108,10 @@ def main():
     # ignorando a última linha, pq é uma quebra de linha (\n)
     for i in range(len(string)-1):
         lista.append(string[i:i+1])
-
     # achando as string complementares de tamanho (7 a 9)
     print("Essas são as string complementares de tamanho 9:")
     slice_and_switch(string, 9)
+
 
 if __name__ == '__main__':
     main()
