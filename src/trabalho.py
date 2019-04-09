@@ -106,11 +106,11 @@ def main():
     lista = []
 
     # ignorando a última linha, pq é uma quebra de linha (\n)
-    for i in range(len(string)-1):
-        lista.append(string[i:i+1])
+    # for i in range(len(string)-1):
+    #     lista.append(string[i:i+1])
     # achando as string complementares de tamanho (7 a 9)
     print("Essas são as string complementares de tamanho 9:")
-    slice_and_switch(string, 9)
+    slice_and_switch(string, 10)
 
 
 if __name__ == '__main__':
