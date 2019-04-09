@@ -1,0 +1,4 @@
+Sequência:  attgaagatcttcaa
+Complementar:  ttgaagatcttcaat
+Sequência:  ttgaagatcttcaat
+Complementar:  attgaagatcttcaa

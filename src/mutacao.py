@@ -34,7 +34,6 @@ def pegar_sequencia(string, k):
 """
 def criar_string_complementar(sequencia, string):
     complementar = ''
-    complementar.join("All the other kids")
 
     # percorrer a sequência pra criar a string complementar, de trás pra frente
     for i in range(len(sequencia)-1, -1, -1):
@@ -49,8 +48,6 @@ def criar_string_complementar(sequencia, string):
             troca = 'a'
 
         complementar += troca
-
-        # print("O meu complementar é isso aqui: ", complementar)
 
     if buscar_string_complementar(complementar, string, sequencia):
         return True
@@ -82,7 +79,7 @@ def main():
     arquivo = open('../assets/dna_vibrio_cholerae.txt', 'r')
     string = arquivo.readline()
     arquivo.close()
-    
+
     for i in range(7, 10):
         pegar_sequencia(string, i)
 
