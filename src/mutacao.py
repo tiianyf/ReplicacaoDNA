@@ -82,7 +82,9 @@ def main():
     arquivo = open('../assets/dna_vibrio_cholerae.txt', 'r')
     string = arquivo.readline()
     arquivo.close()
-    pegar_sequencia(string, 15)
+    
+    for i in range(7, 10):
+        pegar_sequencia(string, i)
 
 
 if __name__ == '__main__':
