@@ -1,14 +1,14 @@
 """
 VALOR: 35pts
 
-1. Ler um arquivo contendo o código genético. // até aí tá tudo tranquilo.
+1. Ler um arquivo contendo o código genético.
 
-2. Fornecer um intervalo para os valores de K, gerando um arquivo txt para cada K (O intervalo será de 7 até 9). //  até aí ok tbm.
+2. Fornecer um intervalo para os valores de K, gerando um arquivo txt para cada K (O intervalo será de 7 até 9).
 
-3. O arquivo de saída deve conter (um arquivo de saída para cada K): // 'dna_k=7.txt', 'dna_k=8.txt', 'dna_k=9.txt'
-    a) As sequências que mais se repetem e sua quantidade; // falta só a quantidade, tem que fazer isso aí ainda.
-    b) Quais dentre as sequências do item (a) possuem inversas e sua quantidade; // meio que já fizemos, só falta a quantidade msm.
-    c) Acrescentar a taxa de mutação 'D', a qual permite uma quantidade 'D' de erros quando as comparações são feitas;// Tá, mas o que é D???
+3. O arquivo de saída deve conter (um arquivo de saída para cada K):
+    a) As sequências que mais se repetem e sua quantidade;
+    b) Quais dentre as sequências do item (a) possuem inversas e sua quantidade;
+    c) Acrescentar a taxa de mutação 'D', a qual permite uma quantidade 'D' de erros quando as comparações são feitas;
 
 OBS: Até agora é como se tivéssemos considerado tudo como D = 0.
 """
@@ -23,7 +23,8 @@ def pegar_sequencia(string, k):
 
     for i in range(numero_de_sequencias):
         sequencia = string[i: i + k]
-        criar_string_complementar(sequencia, string)
+        # criar_string_complementar(sequencia, string)
+        return criar_string_complementar(sequencia, string)
 
 
 """
@@ -46,13 +47,9 @@ def criar_string_complementar(sequencia, string):
             troca = 'c'
         elif sequencia[i] == 't':
             troca = 'a'
-
         complementar += troca
 
-    if buscar_string_complementar(complementar, string, sequencia):
-        return True
-    else:
-        return False
+    return buscar_string_complementar(complementar, string, sequencia)
 
 
 """
@@ -60,28 +57,32 @@ def criar_string_complementar(sequencia, string):
     já existe
 """
 def buscar_string_complementar(complementar, string, sequencia):
-    flag = False
-
+    achou = False
     # percorrendo a string pra ver se acha a complementar
     for i in range(len(string)):
         if string[i: i + len(complementar)] == complementar:
-            flag = True
+            print("Eu estive aqui")
+            achou = True
+            resultado = str("Sequência:" + sequencia + "\nComplementar:" + complementar )
+            return resultado
 
-    if flag:
-        print("Sequência: ", sequencia)
-        print("Complementar: ", complementar)
-        return True
-    else:
-        return False
+    if not achou:
+        return ""
 
 
 def main():
-    arquivo = open('../assets/dna_vibrio_cholerae.txt', 'r')
+    arquivo = open('../assets/dna/dna_vibrio_cholerae.txt', 'r')
     string = arquivo.readline()
     arquivo.close()
 
-    for i in range(7, 10):
-        pegar_sequencia(string, i)
+    k = int(input("\n\tInsira aqui o tamanho da string que deseja analisar: "))
+    pegar_sequencia(string, k)
+    # caminho = "../assets/resultados/k={}.txt".format(k)
+
+    # arq = open(caminho, "w")
+    # resultado = print(pegar_sequencia(string, k))
+    # arq.write(resultado)
+    # arq.close()
 
 
 if __name__ == '__main__':
