@@ -22,27 +22,28 @@ OBS: Até agora é como se tivéssemos considerado tudo como D = 0.
 def pegar_sequencia(string, k):
     # quantas sequências de tamanho k existem na string
     numero_de_sequencias = len(string) - k + 1
-    lista_sequencias_normais = {}
-    lista_salva_complementar = open(
-        "../assets/resultados/lista_de_sequencias_complementares.txt", "w")
+    normal_seq = {}
+    comp_seq = {}
 
     for i in range(numero_de_sequencias):
         sequencia = string[i: i + k]
-        if sequencia in lista_sequencias_normais:
-            lista_sequencias_normais[sequencia] += 1
+        if sequencia in normal_seq:
+            normal_seq[sequencia] += 1
         else:
-            lista_sequencias_normais[sequencia] = 1
+            normal_seq[sequencia] = 1
 
-        criar_string_complementar(
-            sequencia, string, lista_salva_complementar)
+        criar_string_complementar(sequencia, string, comp_seq)
 
     lista_salva = open(
-        '../assets/resultados/lista_de_sequencias_normais.txt', 'w')
+        '../assets/resultados/sequencia_normais.txt', 'w')
 
-    resultado = str(lista_sequencias_normais)
+    resultado = str(normal_seq)
     lista_salva.write(resultado)
     lista_salva.close()
-    lista_salva_complementar.close()
+
+
+def verificar_maior_repeticao(string, k, sequencia):
+    pass
 
 
 """
@@ -53,7 +54,7 @@ def pegar_sequencia(string, k):
 """
 
 
-def criar_string_complementar(sequencia, string, lista_salva_complementar):
+def criar_string_complementar(sequencia, string, comp_seq):
     complementar = ''
     # percorrer a sequência pra criar a string complementar, de trás pra frente
     for i in range(len(sequencia)-1, -1, -1):
@@ -68,7 +69,7 @@ def criar_string_complementar(sequencia, string, lista_salva_complementar):
             troca = 'a'
         complementar += troca
 
-    if buscar_string_complementar(complementar, string, sequencia, lista_salva_complementar):
+    if buscar_string_complementar(complementar, string, sequencia, comp_seq):
         return True
     else:
         return False
@@ -80,27 +81,33 @@ def criar_string_complementar(sequencia, string, lista_salva_complementar):
 """
 
 
-def buscar_string_complementar(complementar, string, sequencia, lista_salva_complementar):
+def buscar_string_complementar(complementar, string, sequencia, comp_seq):
     achou = False
+    maior_sequencia =
 
-    lista_sequencias_complementares = {}
+    arquivo = open(
+        "../assets/resultados/sequencia_complementares_k={}.txt".format(len(sequencia)), "a")
+
     # percorrendo a string pra ver se acha a complementar
     for i in range(len(string)):
         if string[i: i + len(complementar)] == complementar:
-            if complementar in lista_sequencias_complementares:
-                lista_sequencias_complementares[complementar] += 1
+            if complementar in comp_seq:
+                comp_seq[complementar] += 1
             else:
-                lista_sequencias_complementares[complementar] = 1
+                comp_seq[complementar] = 1
             achou = True
-            print("Sequência:" + sequencia + "\nComplementar:" + complementar)
+
+            resultado = str(comp_seq)
+            arquivo.write(resultado)
+            arquivo.close()
             return True
 
     if not achou:
         return False
 
-    resultado = str(lista_sequencias_complementares)
-    resultado = eval(resultado)
-    lista_salva_complementar.write(resultado)
+
+def buscar_maior_repeticao(string, sequencia):
+    pass
 
 
 def main():
