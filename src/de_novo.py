@@ -1,12 +1,29 @@
 """
-ler as sequencias normais que mais se repetem
+VALOR: 35pts
 
-ou seja, criar a funcao pegar_sequencia(), mas somente para as sequencias
-normais e salvar as sequencias mais repetidas num arquivo de texto (no caso, 3
-arquivos de texto, para k=7, k=8 e k=9)
+1. Ler um arquivo contendo o código genético.
 
-ler esse arquivo, e usar as sequencias que mais se repetem (ou melhor, todas as
-sequencias que tiveram o maior número de repetições)
+2. Fornecer um intervalo para os valores de K, gerando um arquivo txt para cada
+   K (O intervalo será de 7 até 9).
+
+3. O arquivo de saída deve conter (um arquivo de saída para cada K):
+a) As sequências que mais se repetem e sua quantidade;
+b) Quais dentre as sequências do item (a) possuem inversas e sua quantidade;
+c) Acrescentar a taxa de mutação 'D', a qual permite uma quantidade 'D' de
+   erros quando as comparações são feitas
+
+OBS: Até agora é como se tivéssemos considerado tudo como D = 0.
+
+
+Meu Entendimento:
+
+-> Ler as sequencias normais que mais se repetem, ou seja, criar a funcao
+pegar_sequencia(), mas somente para as sequencias normais e salvar as
+sequencias mais repetidas num arquivo de texto (no caso, 3 arquivos de texto,
+para k=7, k=8 e k=9)
+
+-> Ler esse arquivo, e usar as sequencias que mais se repetem (ou melhor,
+todas as sequencias que tiveram o maior número de repetições)
 """
 
 """
