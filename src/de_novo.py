@@ -10,70 +10,71 @@ sequencias que tiveram o maior número de repetições)
 """
 
 """
-    Ler as sequências normais (não complementares) de tamanho k, e salvar o
+    Lê as sequências normais (não complementares) de tamanho k,
+    chama a função que acha as sequências de maior repetição e salva o
     resultado em um arquivo.
 """
 
 
-def ler_sequencias(string, k):
+def ler_sequencias_e_salvar(string, k):
     numero_de_sequencias = len(string) - k + 1
     dicionario = {}
 
     for i in range(numero_de_sequencias):
         sequencia = string[i: i + k]
+
         if sequencia in dicionario:
             dicionario[sequencia] += 1
         else:
             dicionario[sequencia] = 1
 
-    arquivo = open(
-        "../assets/resultados/sequencias_k={}.txt".format(k), "w")
-    resultado = str(achar_maior_repeticao(
-        dicionario))
+    arquivo = open("../assets/resultados/sequencias_k={}.txt".format(k), "w")
+    resultado = str(achar_maior_repeticao(dicionario))
+
     arquivo.write(resultado)
     arquivo.close()
 
 
 """
-    Percorrer todo o dicionário, achar as chaves com o maior número e retornar
-    um novo dicionário contendo somente as sequências com o maior número de
-    repetições.
+    Percorre todo o dicionário, acha as sequências com o maior número de
+    repetições e retorna um novo dicionário contendo somente as
+    sequências com o maior número de repetições.
 """
 
 
 def achar_maior_repeticao(dicionario):
     novo_dicionario = {}
-    maior_numero = 1
+    maior_repeticao = 1
 
-    # achando qual é a maior chave (maior número de repetições)
+    # achando qual é a maior repetição
     for seq in dicionario:
-        if dicionario[seq] > maior_numero:
-            maior_numero = dicionario[seq]
+        if dicionario[seq] > maior_repeticao:
+            maior_repeticao = dicionario[seq]
 
     # salvando somente as sequencias com a maior repeticao no novo dicionário
     for seq in dicionario:
-        if dicionario[seq] == maior_numero:
+        if dicionario[seq] == maior_repeticao:
             if seq not in novo_dicionario:
-                novo_dicionario[seq] = maior_numero
+                novo_dicionario[seq] = maior_repeticao
 
     return novo_dicionario
 
 
 """
-    Abre o arquivo com as sequências e repetições, e tranforma em dicionário de
-    novo, para que o mesmo possa ser analisado a existência de inversas
-    complementares com maior facilidade.
+    Abre o arquivo com as sequências e transforma em um dicionário de novo,
+    para que seja fácil de manipular mais tarde.
 """
 
 
-def pegando_do_arquivo_pro_dicionario(string, k):
+def transforma_arquivo_em_dicionario(k):
     arquivo = open("../assets/resultados/sequencias_k={}.txt".format(k), "r")
     resultado = arquivo.readline()
     arquivo.close()
     dicionario = {}
 
-    # transformando a string em dicionário de novo
-    for i in resultado:
+    # transformando a string em dicionário de novo (olha dentro do arquivo e
+    # faz o rastreio, que fica fácil de entender)
+    for i in range(len(resultado)):
         if resultado[i] == ":":
             sequencia = resultado[i - (k + 1): i - 1]
             repeticoes = resultado[i + 2]
@@ -83,12 +84,88 @@ def pegando_do_arquivo_pro_dicionario(string, k):
 
 
 """
-
+    Lê o dicionário das sequencias que contém repetições, cria uma lista de
+    "possíveis inversas", e retorna essa lista.
+    O primeiro laço é feito para cada chave do dicionário (ou seja, para cada
+    sequência armazenada no dicionário)
+    Depois, uma string vazia é declarada
+    Após isso, outro laço é chamado, percorrendo cada letra da sequência
+    E a string 'troca' vai ser alterada para cada letra encontrada na minha
+    sequência
+    E será armazenada na minha string 'inversa'
+    Após isso, a string 'inversa' será adicionada à minha lista de "possíveis
+    inversas"
+    Espero que, juntamente com o código, minha explicação tenha sido clara.
 """
 
 
-def possui_inversa(string, k):
-    pass
+def criando_inversas(dicionario):
+    sequencias = transforma_dicionario_em_lista(dicionario)
+    inversas = []
+
+    for seq in sequencias:
+        inversa = ''
+
+        for i in seq[::-1]:  # ou 'for i in reverse(seq):'
+            troca = ''
+            if i == 'a':
+                troca = 't'
+            elif i == 't':
+                troca = 'a'
+            elif i == 'g':
+                troca = 'c'
+            elif i == 'c':
+                troca = 'g'
+            inversa += troca
+
+        inversas.append(inversa)
+
+    return inversas
+
+
+"""
+    Dado um dicionário, retorna uma lista com as CHAVES do dicionário.
+"""
+
+
+def transforma_dicionario_em_lista(dicionario):
+    lista = list(dicionario)
+    return lista
+
+
+"""
+    Verifica se determinada sequencia de tamanho k contém uma inversa
+    complementar. Caso realmente tenha, armazene num dicionário, juntamente
+    com suas possíveis repetições (dicionario[inversa] == repetição), e, por
+    último, salve num arquivo.
+"""
+
+
+def possui_inversa(k):
+    arquivo = open("../assets/dna/dna_vibrio_cholerae.txt", "r")
+    string = arquivo.readline()
+    arquivo.close()
+    dicionario = transforma_arquivo_em_dicionario(k)
+    inversas_possiveis = criando_inversas(dicionario)
+    inversas_reais = {}
+
+    # para cada letra na string
+    for i in range(len(string)):
+        # caso o intervalo da string esteja na lista de possíveis inversas
+        # (já criada anteriormente)
+        if string[i: i + k] in inversas_possiveis:
+            # e se esse intervalo já foi adicionado ao dicionário de
+            # 'inversas reais', adicione +1 ao seu valor (mais uma repetição)
+            if string[i: i + k] in inversas_reais:
+                inversas_reais[string[i: i + k]] += 1
+            # caso já não tenha sido adicionada anteriormente, adicione agora
+            else:
+                inversas_reais[string[i: i + k]] = 1
+
+    # depois de tudo isso, salve as 'inversas reais' num arquivo de texto
+    arquivo = open("../assets/resultados/inversas_k={}.txt".format(k), "w")
+    arquivo.write(str(inversas_reais))
+    arquivo.close()
 
 
 def main():
@@ -97,11 +174,8 @@ def main():
     arquivo.close()
 
     for k in range(7, 10):
-        ler_sequencias(string, k)
-
-    for k in range(7, 10):
-        pegando_do_arquivo_pro_dicionario(string, k)
-
+        ler_sequencias_e_salvar(string, k)  # somente as de maior repeticao
+        possui_inversa(k)
 
 if __name__ == "__main__":
     main()

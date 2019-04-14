@@ -1,16 +1,16 @@
 """
 VALOR: 35pts
 
-1. Ler um arquivo contendo o código genético. // até aí tá tudo tranquilo.
+1. Ler um arquivo contendo o código genético.
 
 2. Fornecer um intervalo para os valores de K, gerando um arquivo txt para cada
    K (O intervalo será de 7 até 9).
 
-3. O arquivo de saída deve conter (um arquivo de saída para cada K): a) As
-    sequências que mais se repetem e sua quantidade; b) Quais dentre as
-    sequências do item (a) possuem inversas e sua quantidade; c) Acrescentar a
-    taxa de mutação 'D', a qual permite uma quantidade 'D' de erros quando as
-    comparações são feitas
+3. O arquivo de saída deve conter (um arquivo de saída para cada K):
+a) As sequências que mais se repetem e sua quantidade;
+b) Quais dentre as sequências do item (a) possuem inversas e sua quantidade;
+c) Acrescentar a taxa de mutação 'D', a qual permite uma quantidade 'D' de
+   erros quando as comparações são feitas
 
 OBS: Até agora é como se tivéssemos considerado tudo como D = 0.
 """
