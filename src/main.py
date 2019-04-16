@@ -78,6 +78,41 @@ def achar_maior_repeticao(dicionario):
 
 
 """
+    Verifica se determinada sequencia de tamanho k contém uma inversa
+    complementar. Caso realmente tenha, armazene num dicionário, juntamente
+    com suas possíveis repetições (dicionario[inversa] == repetição), e, por
+    último, salve num arquivo.
+"""
+
+
+def possui_inversa(k):
+    arquivo = open("../assets/dna/dna_vibrio_cholerae.txt", "r")
+    string = arquivo.readline()
+    arquivo.close()
+    dicionario = transforma_arquivo_em_dicionario(k)
+    inversas_possiveis = criando_inversas(dicionario)
+    inversas_reais = {}
+
+    # para cada letra na string
+    for i in range(len(string)):
+        # caso o intervalo da string esteja na lista de possíveis inversas
+        # (já criada anteriormente)
+        if string[i: i + k] in inversas_possiveis:
+            # e se esse intervalo já foi adicionado ao dicionário de
+            # 'inversas reais', adicione +1 ao seu valor (mais uma repetição)
+            if string[i: i + k] in inversas_reais:
+                inversas_reais[string[i: i + k]] += 1
+            # caso já não tenha sido adicionada anteriormente, adicione agora
+            else:
+                inversas_reais[string[i: i + k]] = 1
+
+    # depois de tudo isso, salve as 'inversas reais' num arquivo de texto
+    arquivo = open("../assets/resultados/inversas_k={}.txt".format(k), "w")
+    arquivo.write(str(inversas_reais))
+    arquivo.close()
+
+
+"""
     Abre o arquivo com as sequências e transforma em um dicionário de novo,
     para que seja fácil de manipular mais tarde.
 """
@@ -151,38 +186,25 @@ def transforma_dicionario_em_lista(dicionario):
 
 
 """
-    Verifica se determinada sequencia de tamanho k contém uma inversa
-    complementar. Caso realmente tenha, armazene num dicionário, juntamente
-    com suas possíveis repetições (dicionario[inversa] == repetição), e, por
-    último, salve num arquivo.
+    Achar possíveis mutações dentre as sequências, num universo da string
+    original do dna.
 """
 
 
-def possui_inversa(k):
+def achar_mutacao(k, d):
+    arquivo = open("../assets/resultados/sequencias_k={}.txt".format(k), "r")
+    seq = arquivo.readline()
+    arquivo.close
     arquivo = open("../assets/dna/dna_vibrio_cholerae.txt", "r")
-    string = arquivo.readline()
-    arquivo.close()
-    dicionario = transforma_arquivo_em_dicionario(k)
-    inversas_possiveis = criando_inversas(dicionario)
-    inversas_reais = {}
+    dna = arquivo.readline()
+    arquivo.close
 
-    # para cada letra na string
-    for i in range(len(string)):
-        # caso o intervalo da string esteja na lista de possíveis inversas
-        # (já criada anteriormente)
-        if string[i: i + k] in inversas_possiveis:
-            # e se esse intervalo já foi adicionado ao dicionário de
-            # 'inversas reais', adicione +1 ao seu valor (mais uma repetição)
-            if string[i: i + k] in inversas_reais:
-                inversas_reais[string[i: i + k]] += 1
-            # caso já não tenha sido adicionada anteriormente, adicione agora
-            else:
-                inversas_reais[string[i: i + k]] = 1
+    lista_seq = string_de_dicionario_para_lista(seq, k)
+    numero_de_sequencias = len(dna) - k + 1
 
-    # depois de tudo isso, salve as 'inversas reais' num arquivo de texto
-    arquivo = open("../assets/resultados/inversas_k={}.txt".format(k), "w")
-    arquivo.write(str(inversas_reais))
-    arquivo.close()
+    for i in range(numero_de_sequencias):
+        for seq in lista_seq:
+            mutacao(dna[i: i + k], seq, k, d)
 
 
 """
@@ -203,28 +225,6 @@ def string_de_dicionario_para_lista(string, k):
             sequencia += string[i]
 
     return lista
-
-
-"""
-    Achar possíveis mutações dentre as sequências, num universo da string
-    original do dna.
-"""
-
-
-def achar_mutacao(k, d):
-    arquivo = open("../assets/resultados/sequencias_k={}.txt".format(k), "r")
-    seq = arquivo.readline()
-    arquivo.close
-    arquivo = open("../assets/dna/dna_vibrio_cholerae.txt", "r")
-    dna = arquivo.readline()
-    arquivo.close
-
-    lista_seq = string_de_dicionario_para_lista(seq, k)
-    numero_de_sequencias = len(dna) - k + 1
-
-    for i in range(numero_de_sequencias):
-        for seq in lista_seq:
-            mutacao(dna[i: i + k], seq, k, d)
 
 
 def mutacao(dna, seq, k, d):
