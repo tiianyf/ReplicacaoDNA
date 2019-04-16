@@ -165,14 +165,12 @@ def possui_inversa(k):
     dicionario = transforma_arquivo_em_dicionario(k)
     inversas_possiveis = criando_inversas(dicionario)
     inversas_reais = {}
-    sequencias_que_possuem_inversas = []
 
     # para cada letra na string
     for i in range(len(string)):
         # caso o intervalo da string esteja na lista de possíveis inversas
         # (já criada anteriormente)
         if string[i: i + k] in inversas_possiveis:
-            sequencias_que_possuem_inversas.append(string[i: i + k])
             # e se esse intervalo já foi adicionado ao dicionário de
             # 'inversas reais', adicione +1 ao seu valor (mais uma repetição)
             if string[i: i + k] in inversas_reais:
@@ -213,7 +211,7 @@ def string_de_dicionario_para_lista(string, k):
 """
 
 
-def achar_mutacao(k):
+def achar_mutacao(k, d):
     arquivo = open("../assets/resultados/sequencias_k={}.txt".format(k), "r")
     seq = arquivo.readline()
     arquivo.close
@@ -222,12 +220,27 @@ def achar_mutacao(k):
     arquivo.close
 
     lista_seq = string_de_dicionario_para_lista(seq, k)
+    numero_de_sequencias = len(dna) - k + 1
 
-    for i in range(len(dna)):
+    for i in range(numero_de_sequencias):
         for seq in lista_seq:
-            # acho que aqui que começa
-            if dna[i: i + k] == seq:
-                print("Achei uma string igual")
+            mutacao(dna[i: i + k], seq, k, d)
+
+
+def mutacao(dna, seq, k, d):
+    erros = 0
+    for i in range(k):
+        if dna[i] != seq[i]:
+            erros += 1
+    if erros == d:
+        salvar_mutacao(seq, dna, k, d)
+
+
+def salvar_mutacao(seq, dna, k, d):
+    arquivo = open("../assets/resultados/mutacao_k={}_d={}.txt".format(k, d), "a+")
+    resultado = "Original: " + seq + "\n Mutação: " + dna + "\n"
+    arquivo.write(resultado)
+    arquivo.close()
 
 
 def main():
@@ -235,12 +248,12 @@ def main():
     string = arquivo.readline()
     arquivo.close()
 
-    achar_mutacao(9)
+    d = int(input("\n\tInsira aqui o taxa de mutação:  "))
 
-    # for k in range(7, 10):
-    #     # ler_sequencias_e_salvar(string, k)  # somente as de maior repeticao
-    #     # possui_inversa(k)
-    #     achar_mutacao(k)
+    for k in range(7, 10):
+        ler_sequencias_e_salvar(string, k)  # somente as de maior repeticao
+        possui_inversa(k)
+        achar_mutacao(k, d)
 
 
 if __name__ == "__main__":
